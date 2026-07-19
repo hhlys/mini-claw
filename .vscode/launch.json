@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}\\venv\\Scripts\\python.exe",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}\\src"
+            }
+        },
+        {
+            "name": "Python: mini_claw agent",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\src\\mini_claw\\agent.py",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}\\venv\\Scripts\\python.exe",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}\\src"
+            }
+        }
+    ]
+}
