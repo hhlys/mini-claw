@@ -1,11 +1,11 @@
-from mini_claw.model import MockModel
+from mini_claw.model import MockModel,ChatModelBase
 from mini_claw.model import ChatResponse
 from mini_claw.memory import InMemoryMemory
 from mini_claw.message import Msg
 
 
 class AssistantAgent:
-    def __init__(self,name:str,model:MockModel):
+    def __init__(self,name:str,model:ChatModelBase):
         self.name = name;
         self.model = model;
         self.memory = InMemoryMemory()
@@ -17,7 +17,7 @@ class AssistantAgent:
         reply_msg = Msg(self.name, res.text, "assistant")
         self.memory.add(reply_msg)
 
-        return res
+        return reply_msg
 
 
 if __name__ == "__main__":
