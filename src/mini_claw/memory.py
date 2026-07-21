@@ -1,19 +1,19 @@
-from typing import List
 from mini_claw.message import Msg
 
 
 class InMemoryMemory:
-    def __init__(self):
-        self.messgaes:List[Msg] = []
+    def __init__(self) -> None:
+        self.messages: list[Msg] = []
 
-    def add(self,msg:Msg):
-        self.messgaes.append(msg)
+    def add(self, msg: Msg) -> None:
+        self.messages.append(msg)
 
-    def clear(self):
-        self.messgaes.clear();
+    def clear(self) -> None:
+        self.messages.clear()
 
-    def get_memory(self)->List[Msg]:
-        return self.messgaes;
+    def get_memory(self) -> list[Msg]:
+        return self.messages
+
 
 if __name__ == "__main__":
     memory = InMemoryMemory()

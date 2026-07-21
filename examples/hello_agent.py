@@ -1,11 +1,13 @@
-from mini_claw import AssistantAgent, MockModel, Msg
+from mini_claw import AssistantAgent, DeepSeekModel, Msg
+
+import asyncio
 
 
-def main() -> None:
-    agent = AssistantAgent("mini", MockModel())
+async def main() -> None:
+    agent = AssistantAgent("mini", DeepSeekModel(), "You are a helpful assistant.")
 
-    user_msg = Msg("user", "hello mini-claw", "user")
-    reply_msg = agent.reply(user_msg)
+    user_msg = Msg("user", "hello ， who are you?", "user")
+    reply_msg = await agent.reply(user_msg)
 
     print("Reply:")
     print(reply_msg)
@@ -17,4 +19,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
