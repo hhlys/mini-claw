@@ -1,23 +1,27 @@
-from mini_claw import AssistantAgent, DeepSeekModel, Msg
-from mini_claw import get_default_agent_config,create_agent_from_config
-
-
 import asyncio
+
+from mini_claw import MultiSessionAgentRunner, get_default_agent_config
 
 
 async def main() -> None:
-    config = get_default_agent_config();
-    agent = create_agent_from_config(config)
+    config = get_default_agent_config()
+    runner = MultiSessionAgentRunner(config=config)
 
-    user_msg = Msg("user", "hello ， who are you?", "user")
-    reply_msg = await agent.reply(user_msg)
+    await runner.run("Default", "hello, my name is dudu")
+    reply_msg = await runner.run("Default", "what is my name?")
 
-    print("Reply:")
+    print("Reply1:")
+    print(reply_msg)
+    print("Memory1:")
+    for msg in runner.get_session("Default").agent.memory.get_memory():
+        print(msg)
+
+    reply_msg = await runner.run("QA", "what is my name?")
+    print("Reply2:")
     print(reply_msg)
 
-    print()
-    print("Memory:")
-    for msg in agent.memory.get_memory():
+    print("Memory2:")
+    for msg in runner.get_session("QA").agent.memory.get_memory():
         print(msg)
 
 
